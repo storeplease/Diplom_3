@@ -1,7 +1,7 @@
 import allure
 from locators.login_locators import LoginLocators
 from pages.base_page import BasePage
-
+from urls import RESET_PASSWORD_URL
 
 class LoginPage(BasePage):
 
@@ -32,7 +32,6 @@ class LoginPage(BasePage):
     @allure.step("Проверить, что открыта форма сброса пароля")
     def is_on_reset_password_page(self):
         current_url = self.get_current_url()
-        from urls import RESET_PASSWORD_URL
         if RESET_PASSWORD_URL in current_url:
             return True
         return self.is_displayed(LoginLocators.PASSWORD_FIELD_PASSIVE)

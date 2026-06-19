@@ -1,12 +1,9 @@
 import allure
+from locators.main_page_locators import MainPageLocators
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementClickInterceptedException
 from selenium.webdriver.common.by import By
-
-
-OVERLAY = By.XPATH, "//div[contains(@class, 'Modal_modal_overlay')]"
-
 
 class BasePage:
 
@@ -37,7 +34,7 @@ class BasePage:
 
     def _dismiss_overlay_if_present(self):
         try:
-            self.wait_element_until_invisibility(OVERLAY, time=5)
+            self.wait_element_until_invisibility(MainPageLocators.OVERLAY, time=5)
         except TimeoutException:
             pass
 
@@ -125,3 +122,12 @@ class BasePage:
             self.wait_element_until_invisibility(empty_text_locator, time=10)
         except TimeoutException:
             pass
+
+    def wait_for_url_contains(self, text, time=15):
+        WebDriverWait(self.driver, time).until(EC.url_contains(text))
+
+    def wait_for_url_to_be(self, text, time=15):
+        WebDriverWait(self.driver, time).until(EC.url_to_be(text))
+
+    def wait_for_condition(self, condition, time=15):
+        WebDriverWait(self.driver, time).until(condition)

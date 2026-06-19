@@ -85,3 +85,4 @@ def order_flow(driver, registered_user, request):
     main_page.close_order_modal()
 
     return {'order_number': order_number}
+

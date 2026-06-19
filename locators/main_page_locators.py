@@ -21,3 +21,5 @@ class MainPageLocators:
     ORDER_MODAL_CONTAINER = By.XPATH, "//section[contains(@class, 'Modal_modal_opened')]//div[contains(@class, 'Modal_modal__container')]"
     ORDER_NUMBER = By.XPATH, "//section[contains(@class, 'Modal_modal_opened')]//h2[contains(@class, 'Modal_modal__title') and contains(@class, 'text_type_digits-large')]"
     CLOSE_ORDER_MODAL_BUTTON = By.XPATH, "//section[contains(@class, 'Modal_modal_opened')]//button[contains(@class, 'Modal_modal__close')]"
+
+    OVERLAY = By.XPATH, "//div[contains(@class, 'Modal_modal_overlay')]"
